@@ -15,6 +15,7 @@ import java.util.Optional;
 
 public class CourierTest extends AbstractTest{
 
+    //у Вас тесты зависимые, поэтому лучше задать порядок через @Order()
     @Test
     void getCouriers_whenValid_shouldReturn() throws SQLException {
         //given
@@ -65,6 +66,7 @@ public class CourierTest extends AbstractTest{
 
         final Query query = getSession()
                 .createSQLQuery("SELECT * FROM courier_info WHERE courier_id="+5).addEntity(CourierInfoEntity.class);
+        //у Вас переменная entity уже используется на строке 55.
         CourierInfoEntity entity = (CourierInfoEntity) query.uniqueResult();
         //then
         Assertions.assertNotNull(entity);
